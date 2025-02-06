@@ -1,0 +1,31 @@
+[project]
+name = "eagle-helper"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "ZackaryW", email = "gitzackw@gmail.com" }
+]
+dependencies = [
+    "click>=8.1.8",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[project.scripts]
+eagle-helper = "eagle_helper.cli.__init__:load"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "requests>=2.32.3",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/eagle_helper"]
