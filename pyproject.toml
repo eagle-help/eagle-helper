@@ -1,7 +1,7 @@
 [project]
 name = "eagle-helper"
 version = "0.1.0"
-description = "Add your description here"
+description = "Eagle.cool Helper for plugin initialization, i18n efforts, and more."
 authors = [
     { name = "ZackaryW", email = "gitzackw@gmail.com" }
 ]
@@ -29,3 +29,6 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/eagle_helper"]
+include = [
+    "src/eagle_helper/i18n/*.json",
+]

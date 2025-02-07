@@ -1,8 +1,10 @@
 import os
 import typing
-from .. import ABLE_TO_TRANSLATE
+
+import click
 import json
 from ..config import LOCALES_DIR
+import eagle_helper
 
 _placeholder_dict = {"manifest": {"app": {"name": None}}}
 
@@ -58,13 +60,15 @@ def setup_locales(
     _assert_locales_name(plugin_name, main_language)
 
     for language in languages:
+
         if language == main_language:
             continue
 
-        if ABLE_TO_TRANSLATE:
+        if eagle_helper.can_translate:
             from ..config import help_me_translate
 
             try:
+                click.echo(f"Translating plugin name to {language}...")
                 result = help_me_translate(plugin_name, language)
             except Exception as e:
                 print(f"Error translating plugin name: {e}")

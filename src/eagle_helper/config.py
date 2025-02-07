@@ -1,7 +1,7 @@
 LOCALES_DIR = "_locales"
 
 
-def able_to_translate():
+def can_translate():
     try:
         import requests
     except ImportError:
@@ -13,7 +13,10 @@ def able_to_translate():
             return True
 
     except Exception:
-        print("Error checking if DeepSeek is running")
+        print("In order to use this default translation service")
+        print(
+            "You need to install LM Studio with following model deepseek-r1-distill-qwen-7b"
+        )
         return False
 
 
@@ -23,18 +26,25 @@ def help_me_translate(text: str, target_language: str, src_language: str = "en")
     import json
 
     magic = """
-    Translate the following text from {src_language} to {target_language} accurately
-    {text}
+    func(
+        src = {src_language},
+        target = {target_language},
+        text = {text}
+    )
     """
 
     bg = """
-    you are a professional language translator
-    you are given a text and you need to translate it to the target language
-    the first line of the request will include the language code of source and target language
-    you need to translate the text accurately
-    do not add any other text or comments
-    do not repeat the original text
-    only return the translated text without any input including the language code
+
+    emulate a translator function,
+    where you take in an input and output the result, with nothing else
+    the format is like this:
+    func(src, target, text)
+    src is the source language code
+    target is the target language code
+    text is the text to translate
+    you need to translate the text from src to target
+    do not repeat the original text and do not reply that you understands
+    output the result without any explanation and comments
     """
 
     url = "http://localhost:1234/v1/chat/completions"
@@ -53,8 +63,8 @@ def help_me_translate(text: str, target_language: str, src_language: str = "en")
                 ),
             },
         ],
-        "temperature": 0.7,
-        "max_tokens": 5000,
+        "temperature": 0.3,
+        "max_tokens": 1000,
         "stream": False,
     }
 
@@ -64,7 +74,6 @@ def help_me_translate(text: str, target_language: str, src_language: str = "en")
         return res.split("</think>")[1].strip()
     else:
         raise Exception(f"Translation failed with status code {response.status_code}")
-
 
 
 FULL_SET_OF_LOCALES = [
@@ -80,8 +89,12 @@ FULL_SET_OF_LOCALES = [
 LITE_SET_OF_LOCALES = ["en", "zh_CN", "zh_TW", "ja_JP"]
 
 UTILS_REPO = {
-    "repo_url" : "https://github.com/eagle-help/eagle-utils.git",
-    "repo_name" : "eagle-utils",
-    "branch" : "release"
+    "repo_url": "https://github.com/eagle-help/eagle-utils.git",
+    "repo_name": "eagle-utils",
+    "branch": "release",
 }
 
+TEMPLATE_REPO = {
+    "repo_url": "https://github.com/eagle-help/eagle-plugin-template.git",
+    "repo_name": "eagle-plugin-template",
+}

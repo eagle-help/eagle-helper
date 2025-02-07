@@ -3,6 +3,7 @@ from functools import cache
 from eagle_helper import LOCALES_DIR
 import json
 
+
 def get_sys_language_code():
 
     import locale
@@ -13,7 +14,9 @@ def get_sys_language_code():
 
     return res
 
+
 LANGUAGE_MODE = get_sys_language_code()
+
 
 @cache
 def load_i18n_file(lang: str):
@@ -25,6 +28,7 @@ def load_i18n_file(lang: str):
 
 
 I18N_CACHE = {}
+
 
 def i18n(key: str, fallback: str = None):
     if key in I18N_CACHE:

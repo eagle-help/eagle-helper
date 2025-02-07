@@ -58,5 +58,16 @@
     "walk.locales_default": "默认语言（或en）？",
     "walk.locales_set": "支持完整集还是精简集（en, zh_CN, zh_TW, ja_JP）？",
     "walk.locales_support": "你想要支持国际化吗？",
-    "walk.manifest_exists": "manifest.json已存在, 现已退出"
+    "walk.manifest_exists": "manifest.json已存在, 现已退出",
+    "cli.help.path": "设置插件路径",
+    "cli.help.skip_pull": "跳过拉取Repo",
+    "walk.utils": "你想要设置utils吗？",
+    "walk.window": "你想要设置窗口吗？",
+    "walk.window.type": "窗口的类型是什么？",
+    "walk.format": "你想要设置检查器/格式化器吗？",
+    "walk.format.add": "你想要添加另一个格式化器吗？",
+    "walk.format.types": "格式化器的类型是什么？",
+    "walk.format.types.error": "无效的格式化器类型",
+    "walk.inspector.add": "你想要添加一个检查器吗？",
+    "walk.done": "完成！"
 }
