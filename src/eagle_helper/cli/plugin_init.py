@@ -298,6 +298,7 @@ def window(obj, **kwargs):
     with open("manifest.json", "w", encoding="utf-8") as f:
         json.dump(obj["manifest"], f, indent=4, ensure_ascii=False)
 
+    setup_artifact_html(kwargs.get("url"))
 
 @init.command(
     "add-service",

@@ -1,6 +1,6 @@
 [project]
 name = "eagle-helper"
-version = "0.1.0"
+version = "0.1.1"
 description = "Eagle.cool Helper for plugin initialization, i18n efforts, and more."
 authors = [
     { name = "ZackaryW", email = "gitzackw@gmail.com" }

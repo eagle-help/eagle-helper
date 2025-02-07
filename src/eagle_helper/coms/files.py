@@ -52,6 +52,7 @@ def setup_artifact_html(path: str):
     basename = os.path.splitext(os.path.basename(path))[0]
 
     pathpart = os.path.dirname(path)
+    os.makedirs(pathpart, exist_ok=True)
 
     targetjsname = f"{basename}.js"
     targetjspath = os.path.join(pathpart, targetjsname)
